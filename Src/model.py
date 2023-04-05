@@ -19,7 +19,7 @@ nu_tilde_to_eddy = lambda nu_tilde : nu_tilde*f_v1(nu_tilde)
 class PINN(nn.Module):
     def __init__(self,da):
         super().__init__() # initialising the parent class
-        # self.activation = nn.ReLU()
+        self.activation_relu = nn.ReLU()
         self.activation = nn.Tanh()
         self.layers = config.layers
         self.da = da
@@ -41,7 +41,8 @@ class PINN(nn.Module):
             a = self.activation(z)
         
         # learned features
-        a = self.linears[-1](a) # no activation function
+        z = self.linears[-1](a) # ReLu
+        a = self.activation_relu(z)
         return a
     
     # Boundary condition

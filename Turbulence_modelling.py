@@ -22,7 +22,7 @@ def main():
     training.extrapolate()
 
     # Visualisation
-    visualisation.compare(training.da.x_test,training.da.Y_test,training.da.scaler.inverse_transform(training.y_pre))
+    visualisation.compare(training.da.x_test,training.da.Y_test,training.da.scaler.inverse_transform(training.y_pred))
     title = "Contour plot for predicted U (x-component velocity)"
     xlim = [-0.015,0.05]
     ylim = [0,0.0005]
